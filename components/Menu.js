@@ -8,10 +8,33 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+let header = document.querySelector('.header')
+function menuMaker(data) {
+  let outsideDiv = document.createElement('div')
+  outsideDiv.classList.add('menu')
+  let item = document.createElement('ul')
 
+  outsideDiv.appendChild(item)
+
+  let button = document.querySelector('.menu-button')
+
+  button.addEventListener('click', () => { 
+    outsideDiv.classList.toggle('menu--open')
+})
+data.forEach((element) => {
+  let li = document.createElement('li')
+  li.textContent = element
+  item.appendChild(li)
+})
+button.appendChild(outsideDiv)
+return outsideDiv
+}
+header.appendChild(menuMaker(menuItems))
+
+// saving
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
-
+function menuMaker
   <div class="menu">
     <ul>
       {each menu item as an <li>}
