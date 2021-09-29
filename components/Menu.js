@@ -23,6 +23,7 @@ function menuMaker(data) {
   });
   data.forEach((element) => {
     let li = document.createElement("li");
+
     li.textContent = element;
     item.appendChild(li);
   });
@@ -30,7 +31,6 @@ function menuMaker(data) {
   return outsideDiv;
 }
 header.appendChild(menuMaker(menuItems));
-
 
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:

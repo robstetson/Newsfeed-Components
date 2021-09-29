@@ -88,39 +88,42 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
   },
 ];
-let articleContainer = document.querySelector('.articles')
+let articleContainer = document.querySelector(".articles");
 
 function articleMaker(data) {
-  let article = document.createElement('div')
-  article.classList.add("article")
+  let article = document.createElement("div");
+  article.classList.add("article");
 
-  let titleH2 = document.createElement('h2')
-  titleH2.textContent = data.title
+  let titleH2 = document.createElement("h2");
+  titleH2.textContent = data.title;
 
-  let dateP = document.createElement('p')
-  dateP.classList.add('date')
-  dateP.textContent = data.date
+  let dateP = document.createElement("p");
+  dateP.classList.add("date");
+  dateP.textContent = data.date;
 
-  let p1 = document.createElement('p')
-  p1.textContent = data.firstParagraph
+  let p1 = document.createElement("p");
+  p1.textContent = data.firstParagraph;
 
-  let p2 = document.createElement('p')
-  p2.textContent = data.secondParagraph
+  let p2 = document.createElement("p");
+  p2.textContent = data.secondParagraph;
 
-  let p3 = document.createElement('p')
-  p3.textContent = data.thirdParagraph
+  let p3 = document.createElement("p");
+  p3.textContent = data.thirdParagraph;
 
-  let span = document.createElement('span')
-  span.classList.add('expandButton')
-  article.append(titleH2, dateP, p1, p2, p3, span)
-  
-  article.addEventListener('click', () => article.classList.toggle('article-open'))
-  return article
+  let span = document.createElement("span");
+  span.classList.add("expandButton");
+  article.append(titleH2, dateP, p1, p2, p3, span);
+
+  article.addEventListener("click", (event) => {
+    article.classList.toggle("article-open")
+    event.stopPropagation();
+  });
+  return article;
 }
 
-data.forEach(element => {
-  articleContainer.appendChild(articleMaker(element))
-})
+data.forEach((element) => {
+  articleContainer.appendChild(articleMaker(element));
+});
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
